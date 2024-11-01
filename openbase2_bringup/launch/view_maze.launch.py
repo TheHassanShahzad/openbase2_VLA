@@ -16,7 +16,7 @@ def generate_launch_description():
 
     xacro_file = os.path.join(urdf_dir, 'urdf', 'openbase2.xacro')
     maze_world_file = os.path.join(this_dir, 'worlds', 'maze.world')
-    house_world_file = os.path.join(world_dir, 'worlds', 'small_house.world')
+    # house_world_file = os.path.join(world_dir, 'worlds', 'small_house.world')
 
     robot_description_config = xacro.process_file(xacro_file)
     robot_urdf = robot_description_config.toxml()
