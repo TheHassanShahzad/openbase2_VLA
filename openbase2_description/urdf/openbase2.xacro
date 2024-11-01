@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<robot name="openbase2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find openbase2_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find openbase2_description)/urdf/openbase2.trans" />
+<xacro:include filename="$(find openbase2_description)/urdf/openbase2.gazebo" />
+<xacro:include filename="$(find openbase2_description)/urdf/lidar.xacro" />
+<!-- <xacro:include filename="$(find openbase2_description)/urdf/camera.xacro" /> -->
+<xacro:include filename="$(find openbase2_description)/urdf/depth_camera.xacro" />
+
+<link name="base_footprint"></link>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="10"/>
+    <inertia ixx="0.167" iyy="0.16" izz="0.326" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/base_link_visual.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/base_link_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel">
+  <inertial>
+    <origin xyz="-1.6187068174744468e-07 -0.03345401931152231 -6.8663458338939776e-06" rpy="0 0 0"/>
+    <mass value="0.9580297510218474"/>
+    <inertia ixx="0.001585" iyy="0.002703" izz="0.001585" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.13 0.195 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.13 0.195 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel">
+  <inertial>
+    <origin xyz="1.6187068152540007e-07 0.03345401931152345 -6.866345833949489e-06" rpy="0 0 0"/>
+    <mass value="0.9580297510218474"/>
+    <inertia ixx="0.001585" iyy="0.002703" izz="0.001585" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.13 -0.195 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.13 -0.195 0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_swivel_mount">
+  <inertial>
+    <origin xyz="-0.005902204584993936 -0.000332124257035743 -0.019407383694095434" rpy="0 0 0"/>
+    <mass value="0.19122754778872791"/>
+    <inertia ixx="8.9e-05" iyy="9.4e-05" izz="7.9e-05" ixy="-1e-06" iyz="-3e-06" ixz="-2.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.145 0.15 0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_swivel_mount.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.145 0.15 0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_swivel_mount_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_swivel_wheel">
+  <inertial>
+    <origin xyz="-3.9880837104933065e-09 -0.016193225477194206 -2.7986558528980687e-08" rpy="0 0 0"/>
+    <mass value="0.5390945617337457"/>
+    <inertia ixx="0.000251" iyy="0.00045" izz="0.000251" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1165 0.13375 0.0765" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_swivel_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1165 0.13375 0.0765" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_swivel_wheel_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_swivel_mount">
+  <inertial>
+    <origin xyz="-0.005902204584993742 -0.0003321242570359373 -0.019407383694095455" rpy="0 0 0"/>
+    <mass value="0.19122754778872791"/>
+    <inertia ixx="8.9e-05" iyy="9.4e-05" izz="7.9e-05" ixy="-1e-06" iyz="-3e-06" ixz="-2.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.145 -0.15 0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_swivel_mount.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.145 0.15 0.015" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_swivel_mount_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_swivel_wheel">
+  <inertial>
+    <origin xyz="-3.9880835578376406e-09 -0.016193225477194595 -2.7986558528980687e-08" rpy="0 0 0"/>
+    <mass value="0.5390945617337457"/>
+    <inertia ixx="0.000251" iyy="0.00045" izz="0.000251" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1165 -0.16625 0.0765" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_swivel_wheel.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1165 0.13375 0.0765" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_swivel_wheel_collision.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_footprint_joint" type="fixed">
+  <origin xyz="0 0 0.11158" rpy="0 0 0"/>
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
+<joint name="base_right_wheel_joint" type="continuous">
+  <origin xyz="-0.13 -0.195 -0.03" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel"/>
+  <axis xyz="0 1 0"/>
+</joint>
+
+<joint name="base_left_wheel_joint" type="continuous">
+  <origin xyz="-0.13 0.195 -0.03" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel"/>
+  <axis xyz="0 1 0"/>
+</joint>
+
+<joint name="base_right_swivel_mount_joint" type="continuous">
+  <origin xyz="0.145 -0.15 -0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_swivel_mount"/>
+  <axis xyz="0 0 -1.0"/>
+</joint>
+
+<joint name="right_swivel_wheel_joint" type="continuous">
+  <origin xyz="-0.0285 0.01625 -0.0615" rpy="0 0 0"/>
+  <parent link="right_swivel_mount"/>
+  <child link="right_swivel_wheel"/>
+  <axis xyz="0 1.0 0"/>
+</joint>
+
+<joint name="base_left_swivel_mount_joint" type="continuous">
+  <origin xyz="0.145 0.15 -0.015" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_swivel_mount"/>
+  <axis xyz="0 0 -1.0"/>
+</joint>
+
+<joint name="left_swivel_wheel_joint" type="continuous">
+  <origin xyz="-0.0285 0.01625 -0.0615" rpy="0 0 0"/>
+  <parent link="left_swivel_mount"/>
+  <child link="left_swivel_wheel"/>
+  <axis xyz="0 1.0 -0"/>
+</joint>
+
+</robot>
