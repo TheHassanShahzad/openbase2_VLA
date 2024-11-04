@@ -47,7 +47,7 @@
   <collision>
     <origin xyz="0.13 0.195 0.03" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find openbase2_description)/meshes/right_wheel.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find openbase2_description)/meshes/right_wheel_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -68,7 +68,7 @@
   <collision>
     <origin xyz="0.13 -0.195 0.03" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find openbase2_description)/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find openbase2_description)/meshes/left_wheel_collision.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
